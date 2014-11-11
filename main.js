@@ -11,23 +11,23 @@ require(['requireConfig'], function(){
         AudioTerrain
     ){
 
-        var tickCount = 0;
-        var updateEvery = 3;
+        var updates = 0;
+        var updateEvery = 2;
 
         var terrain = new AudioTerrain({
-            colours: {fill: 0xcc0000, wireframe: 0xff3333},
+            colours: {fill: 0x00cccc, wireframe: 0x44ffff},
             width: 128,
             height: 128
         });
 
         var audio = new AudioData({
-            src: 'mp3/minuit-jacuzzi.mp3',
+            src: 'mp3/macintosh-plus.mp3',
             width: 128,
             onTick: function(buffer){
                 terrain.update(buffer);
-                // if(tickCount++ % updateEvery === 0){
+                if(updates++ % updateEvery === 0){
                     terrain.smearDown();
-                // }
+                }
             }
         });
 
