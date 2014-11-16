@@ -118,11 +118,14 @@ function(
     Terrain.prototype.smearDown = function(){
         var geometry = this.plane.children[0].geometry;
         var vertices = geometry.vertices;
-        var faces = geometry.faces.slice();
+        var faces = geometry.faces;
 
         for(var i = faces.length - 1; i >= this.width; i--){
-            var sampleZ = vertices[faces[i - this.width].b].z;
-            setFaceVelocity(vertices, faces[i], sampleZ);
+            var aVelocity = vertices[faces[i - this.width].a].z;
+            var bVelocity = vertices[faces[i - this.width].b].z;
+            var cVelocity = vertices[faces[i - this.width].c].z;
+            var avgVelocity = (aVelocity + bVelocity + cVelocity) / 3;
+            setFaceVelocity(vertices, faces[i], avgVelocity);
         }
 
         geometry.verticesNeedUpdate = true;

@@ -12,7 +12,7 @@ require(['requireConfig'], function(){
     ){
 
         var updates = 0;
-        var updateEvery = 2;
+        var updateEvery = 1;
 
         var terrain = new AudioTerrain({
             colours: {fill: 0x00cccc, wireframe: 0x44ffff},
@@ -21,7 +21,7 @@ require(['requireConfig'], function(){
         });
 
         var audio = new AudioData({
-            src: 'mp3/macintosh-plus.mp3',
+            src: 'mp3/zoladomain-sunglass.mp3',
             width: 128,
             onTick: function(buffer){
                 terrain.update(buffer);
