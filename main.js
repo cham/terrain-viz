@@ -13,13 +13,13 @@ require(['requireConfig'], function(){
 
         var terrain = new AudioTerrain({
             colours: {fill: 0xff69b4, wireframe: 0x000000},
-            width: 128,
-            height: 128
+            width: 256,
+            height: 256
         });
 
         var audio = new AudioData({
             src: 'mp3/macintosh-plus.mp3',
-            width: 128,
+            width: 256,
             onTick: function(buffer){
                 terrain.update(buffer);
                 terrain.smearDown();

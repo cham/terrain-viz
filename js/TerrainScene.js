@@ -49,8 +49,6 @@ define([
 
     function rotateCamera(cam, ticks){
         cam.position.x = Math.sin(ticks*0.005) * cameraDistance;
-        // cam.position.y = Math.PI - Math.sin(ticks*0.005) * cameraDistance;
-        //250 + (Math.sin(ticks*0.005) * cameraDistance/3) + cameraDistance*2/3;
         cam.position.z = Math.PI - Math.cos(ticks*0.005) * cameraDistance;
 
 
