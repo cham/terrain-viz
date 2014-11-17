@@ -11,9 +11,6 @@ require(['requireConfig'], function(){
         AudioTerrain
     ){
 
-        var updates = 0;
-        var updateEvery = 2;
-
         var terrain = new AudioTerrain({
             colours: {fill: 0xff69b4, wireframe: 0x000000},
             width: 128,
@@ -25,9 +22,7 @@ require(['requireConfig'], function(){
             width: 128,
             onTick: function(buffer){
                 terrain.update(buffer);
-                if(updates++ % updateEvery === 0){
-                    terrain.smearDown();
-                }
+                terrain.smearDown();
             }
         });
 
