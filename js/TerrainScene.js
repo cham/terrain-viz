@@ -7,7 +7,7 @@ define([
 ){
     'use strict';
 
-    var cameraDistance = 1000;
+    var cameraDistance = 1200;
 
     function windowSize(){
         return {
@@ -29,7 +29,7 @@ define([
         var wSize = windowSize();
         var cam = new THREE.PerspectiveCamera(40, wSize.width / wSize.height, 1, 20000);
         
-        cam.position.set(0, 500, -1000);
+        cam.position.set(0, 700, -1000);
         cam.target = new THREE.Vector3(0, 0, 0);
         cam.lookAt(cam.target);
 
@@ -37,7 +37,7 @@ define([
     }
 
     function sceneLighting(){
-        var spotlight = new THREE.SpotLight(0x00ffff, 1);
+        var spotlight = new THREE.SpotLight(0xff69b4, 1);
 
         spotlight.position.set(1000, 1000, -1000);
         spotlight.target.position.set(0, 0, 0);

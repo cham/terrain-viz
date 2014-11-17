@@ -28,51 +28,6 @@ function(
         return mesh;
     }
 
-    function getVertexAndNeighbours(vertices, index){
-        var vArr = [];
-
-        if(vertices[index-1]){
-            vArr.push(vertices[index-1]);
-        }
-        if(vertices[index]){
-            vArr.push(vertices[index]);
-        }
-        if(vertices[index+1]){
-            vArr.push(vertices[index+1]);
-        }
-
-        return vArr;
-    }
-
-    function increaseVertexGroup(meshVertices, centerIndex, increase){
-        var filteredVertices = [];
-
-        filteredVertices = filteredVertices.concat(getVertexAndNeighbours(meshVertices, centerIndex));
-        filteredVertices = filteredVertices.concat(getVertexAndNeighbours(meshVertices, centerIndex + meshSideLength));
-        filteredVertices = filteredVertices.concat(getVertexAndNeighbours(meshVertices, centerIndex - meshSideLength));
-
-        filteredVertices.forEach(function(vertex){
-            vertex.z += increase;
-        });
-    }
-
-    function randomiseVertices(mesh, accelMap){
-        var friction = 0.95;
-        
-        mesh.geometry.vertices = mesh.geometry.vertices.map(function(vertex, i){
-            accelMap[i] += (Math.random() * 0.1) - 0.05;
-            accelMap[i] *= friction;
-
-            increaseVertexGroup(mesh.geometry.vertices, i, accelMap[i]);
-
-            if(vertex.z > 300){
-                vertex.z = 300;
-            }
-            return vertex;
-        });
-        mesh.geometry.verticesNeedUpdate = true;
-    }
-
     function setFaceVelocity(vertices, face, velocity){
         vertices[face.a].z = velocity;
         vertices[face.b].z = velocity;
